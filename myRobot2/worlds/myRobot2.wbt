@@ -1,0 +1,212 @@
+#VRML_SIM R2025a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/floors/protos/RectangleArena.proto"
+
+WorldInfo {
+}
+Viewpoint {
+  orientation 0.11803752423322529 0.11808976458100956 -0.9859624487647045 1.5844664764213288
+  position -0.2332203005394652 1.8201299829608955 1.1009326158496788
+  follow "lidar_bot"
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  floorSize 3 3
+  floorAppearance PBRAppearance {
+    roughness 1
+    metalness 0
+  }
+}
+Robot {
+  translation 0 0 0.04
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 1 0.5 0
+        roughness 0.7
+        metalness 0.3
+      }
+      geometry Box {
+        size 0.2 0.15 0.08
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 1 0
+        anchor 0 0.09 0
+      }
+      device [
+        RotationalMotor {
+          name "left_motor"
+        }
+      ]
+      endPoint Solid {
+        translation 0 0.09 0
+        rotation 1 0 0 1.5708
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0.2 0.2 0.2
+            }
+            geometry Cylinder {
+              height 0.02
+              radius 0.04
+            }
+          }
+        ]
+        name "left_wheel"
+        boundingObject Cylinder {
+          height 0.02
+          radius 0.04
+        }
+        physics Physics {
+          density -1
+          mass 0.1
+        }
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 1 0
+        anchor 0 -0.09 0
+      }
+      device [
+        RotationalMotor {
+          name "right_motor"
+        }
+      ]
+      endPoint Solid {
+        translation 0 -0.09 0
+        rotation 1 0 0 1.5708
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0.2 0.2 0.2
+            }
+            geometry Cylinder {
+              height 0.02
+              radius 0.04
+            }
+          }
+        ]
+        name "right_wheel"
+        boundingObject Cylinder {
+          height 0.02
+          radius 0.04
+        }
+        physics Physics {
+          density -1
+          mass 0.1
+        }
+      }
+    }
+    Solid {
+      translation -0.08 0 -0.02
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.3 0.3 0.3
+          }
+          geometry Sphere {
+            radius 0.015
+          }
+        }
+      ]
+      name "caster"
+      boundingObject Sphere {
+        radius 0.015
+      }
+      physics Physics {
+        density -1
+        mass 0.05
+      }
+    }
+    Lidar {
+      translation 0 0 0.06
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.2 0.2
+            metalness 0.8
+          }
+          geometry Cylinder {
+            height 0.02
+            radius 0.03
+          }
+        }
+      ]
+      horizontalResolution 360
+      fieldOfView 6.2832
+      numberOfLayers 1
+      maxRange 3
+      resolution 0.01
+    }
+  ]
+  name "lidar_bot"
+  boundingObject Box {
+    size 0.2 0.15 0.08
+  }
+  physics Physics {
+    density -1
+    mass 1
+  }
+  controller "my_controller"
+}
+Solid {
+  translation -0.6 -0.7 0.05
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.9 0.2 0.2
+      }
+      geometry Box {
+        size 0.3 0.3 0.1
+      }
+    }
+  ]
+  name "obstacle_1"
+  boundingObject Box {
+    size 0.3 0.3 0.1
+  }
+}
+Solid {
+  translation 0.8 0.4 0.05
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.2 0.9 0.2
+      }
+      geometry Cylinder {
+        height 0.1
+        radius 0.15
+      }
+    }
+  ]
+  name "obstacle_2"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.15
+  }
+}
+Solid {
+  translation -1 0.6 0.05
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.2 0.2 0.9
+      }
+      geometry Sphere {
+        radius 0.15
+      }
+    }
+  ]
+  name "obstacle_3"
+  boundingObject Sphere {
+    radius 0.15
+  }
+}
