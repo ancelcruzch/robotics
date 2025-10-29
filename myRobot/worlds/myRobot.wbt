@@ -1,0 +1,58 @@
+#VRML_SIM R2025a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/floors/protos/RectangleArena.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/robots/gctronic/e-puck/protos/E-puck.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/robots/gctronic/e-puck/protos/E-puckGroundSensors.proto"
+
+WorldInfo {
+}
+Viewpoint {
+  orientation 0.35111130915765465 0.2168649836498634 -0.9108734420588528 2.0119111256077873
+  position 0.8850628955720022 1.9289756417545867 1.4951312942590933
+  follow "e-puck"
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  rotation 0 0 1 -1.5707953071795862
+  floorSize 1.2 1.8
+  floorTileSize 1.2 1.8
+  floorAppearance PBRAppearance {
+    baseColor 0.823423 0.876036 1
+    baseColorMap ImageTexture {
+      url [
+        "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/robots/gctronic/e-puck/worlds/textures/oval_line.png"
+      ]
+    }
+    roughness 1
+    metalness 0
+  }
+}
+DEF E_PUCK E-puck {
+  hidden position_0_0 1318.604316411754
+  hidden position_0_1 1211.282352012899
+  hidden linearVelocity_0 0.025021374254269105 -4.4449153972614194e-05 1.5412394229010573e-08
+  hidden angularVelocity_0 -4.909304937347309e-06 -0.002385583266952154 0.002286101748723652
+  hidden translation_1 0 0.026 0.02
+  hidden rotation_1 0 -1 0 5.8592671655821285
+  hidden linearVelocity_1 0.02494912703087211 -4.433034631762793e-05 3.0691424957048154e-09
+  hidden angularVelocity_1 0.0022164639714689948 1.2473324564854436 0.002280418343949136
+  hidden translation_2 0 -0.026000000000000002 0.02
+  hidden rotation_2 0 -1 0 5.408739088308081
+  hidden linearVelocity_2 0.025069768800522932 -4.453992610983832e-05 -3.0468235490122995e-09
+  hidden angularVelocity_2 0.0022270470334515126 1.2536124200471994 0.002280488797035901
+  translation 0.1704710584158447 0.4516943464510285 -6.395097870008117e-05
+  rotation 0.0004949813850668239 0.5369950215064934 0.8435852665087681 -0.0019970128700306233
+  controller "e-puck_line_demo"
+  window "botstudio"
+  camera_width 40
+  camera_height 1
+  groundSensorsSlot [
+    E-puckGroundSensors {
+    }
+  ]
+}
